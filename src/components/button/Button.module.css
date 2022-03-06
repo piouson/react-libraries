@@ -17,18 +17,18 @@
 }
 /* button variant */
 .btn.primary {
-  background: #24a0ed;
-  border: 1px solid #24a0ed;
+  background: #025488;
+  border: 1px solid #025488;
   color: white;
 }
 .btn.secondary {
   background: white;
-  border: 1px solid #24a0ed;
-  color: #24a0ed;
+  border: 1px solid #025488;
+  color: #025488;
 }
 .btn.ghost {
   border: 1px solid #f4f4f4;
-  color: gray;
+  color: #323330;
 }
 /* button size */
 .btn.full {

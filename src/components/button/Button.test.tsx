@@ -9,7 +9,9 @@ describe('Button tests', () => {
 
   test('No accessibility violations', async () => {
     const { container } = render(<Primary />);
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /primary button/i })
+    ).toBeInTheDocument();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
