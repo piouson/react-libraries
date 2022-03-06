@@ -25,7 +25,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "format": "prettier --write .",
-    "deploy": "storybook-to-ghpages"
+    "deploy": "storybook-to-ghpages",
+    "cicd": "storybook-to-ghpages --ci --host-token-env-variable=GITHUB_TOKEN"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
