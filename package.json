@@ -24,7 +24,8 @@
     "test-watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "deploy": "storybook-to-ghpages"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -38,6 +39,7 @@
     "@storybook/addon-links": "^6.4.19",
     "@storybook/jest": "^0.0.9",
     "@storybook/react": "^6.4.19",
+    "@storybook/storybook-deployer": "^2.8.10",
     "@storybook/testing-library": "^0.0.9",
     "@storybook/testing-react": "^1.2.3",
     "@testing-library/jest-dom": "^5.16.2",
@@ -70,5 +72,14 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
-  }
+  },
+  "repository": {
+    "url": "https://github.com/piouson/react-modules.git",
+    "type": "git"
+  },
+  "keywords": [
+    "react",
+    "component-library",
+    "modules"
+  ]
 }
