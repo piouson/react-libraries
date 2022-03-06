@@ -8,7 +8,6 @@ describe('Button tests', () => {
   const { Primary } = composeStories(stories);
 
   test('No accessibility violations', async () => {
-    console.log({ stories });
     const { container } = render(<Primary />);
     expect(screen.getByRole('button')).toBeInTheDocument();
     const results = await axe(container);
