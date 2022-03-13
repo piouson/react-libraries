@@ -1,37 +1,56 @@
-import resolve from '@rollup/plugin-node-resolve';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
+import babel, { getBabelOutputPlugin } from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
-import external from 'rollup-plugin-peer-deps-external';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import dts from 'rollup-plugin-dts';
 
+const isProduction = process.env.NODE_ENV === 'production';
 const packageJson = require('./package.json');
 
 const rollupConfig = [
   {
     input: 'src/index.ts',
+    external: ['react', 'react-dom'],
     output: [
       {
         file: packageJson.main,
         format: 'cjs',
-        sourcemap: true,
+        sourcemap: !isProduction,
         name: 'piouson-react-modules',
       },
       {
         file: packageJson.module,
         format: 'esm',
-        sourcemap: true,
+        sourcemap: !isProduction,
+        plugins: [
+          getBabelOutputPlugin({
+            presets: ['@babel/preset-env'],
+          }),
+        ],
       },
     ],
     plugins: [
-      external(),
-      resolve(),
+      peerDepsExternal(),
+      nodeResolve(),
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
       postcss({
-        extract: true,
-        sourceMap: true,
+        config: {
+          path: './postcss.config.js',
+        },
+        minimize: true,
+        sourceMap: !isProduction,
+        inject: {
+          insertAt: 'top',
+        },
+      }),
+      babel({
+        babelHelpers: 'bundled',
+        presets: ['@babel/preset-react'],
+        exclude: 'node_modules/**',
       }),
       terser(),
     ],

@@ -1,7 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
 import { ButtonType } from './Button.types';
-import styles from './Button.module.css';
+import './Button.css';
+import '../../styles/tailwind.css';
+import styles from './Button.styles';
 
 const Button: React.FC<ButtonType> = ({
   active,
@@ -15,15 +17,15 @@ const Button: React.FC<ButtonType> = ({
   variant = 'primary',
 }) => (
   <button
-    aria-label={variant === 'ghost' ? label : ''}
-    className={clsx(styles.btn, className, styles[variant], styles[size], {
-      [styles.active]: active,
-      [styles.disabled]: disabled,
-      [styles.rounded]: rounded,
+    className={clsx(styles.btn, 'btn bg-sky-800', className, variant, size, {
+      active,
+      disabled,
+      rounded,
     })}
     disabled={disabled}
     onClick={onClick}
     style={style}
+    {...(variant === 'ghost' ? { 'aria-label': label } : {})}
   >
     {label}
   </button>

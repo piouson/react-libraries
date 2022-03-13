@@ -1,5 +1,7 @@
 import { MouseEventHandler } from 'react';
 
+export type KeyValueString = { [key: string]: string };
+
 export type ButtonType = {
   label: string;
   size?: 'large' | 'medium' | 'small' | 'wide' | 'full';
@@ -9,6 +11,5 @@ export type ButtonType = {
   active?: boolean;
   disabled?: boolean;
   className?: string;
-  style?: { [key: string]: string };
-  'aria-label'?: string;
+  style?: KeyValueString;
 };
