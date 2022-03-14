@@ -4,13 +4,14 @@ const styles: KeyValueString = {
   base: 'whitespace-nowrap transition-colors ease-in-out duration-300',
   disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
   font: 'font-medium leading-5',
-  active: 'active:bg-sky-600',
+  activePrimary: 'active:bg-sky-600',
+  activeSecondary: 'active:bg-sky-100',
   hoverPrimary: 'hover:bg-sky-700',
   hoverSecondary: 'hover:bg-sky-100',
   hoverGhost: 'border-transparent',
   cursor: 'cursor-pointer',
   cursorWait: 'cursor-wait',
-  focus: 'focus:outline-none focus:ring focus:ring-sky-300',
+  focus: 'focus:outline-none focus:ring focus:ring-sky-50/10',
   border: 'border-2',
   borderHidden: 'border-transparent',
   borderColor: 'border-sky-600',
@@ -27,9 +28,7 @@ const styles: KeyValueString = {
   colorMain: 'text-white',
   colorAlt: 'text-sky-600',
   get btn() {
-    return [this.base, this.disabled, this.font, this.active, this.focus].join(
-      ' '
-    );
+    return [this.base, this.disabled, this.font, this.focus].join(' ');
   },
   get primary() {
     return [
@@ -38,6 +37,7 @@ const styles: KeyValueString = {
       this.bg,
       this.colorMain,
       this.hoverPrimary,
+      this.activePrimary,
     ].join(' ');
   },
   get secondary() {
@@ -46,6 +46,8 @@ const styles: KeyValueString = {
       this.borderColor,
       this.colorAlt,
       this.hoverSecondary,
+      this.bgInherit,
+      this.activeSecondary,
     ].join(' ');
   },
   get ghost() {
