@@ -4,7 +4,9 @@ export type KeyValueString = { [key: string]: string };
 
 export type ButtonType = {
   label: string;
-  size?: 'large' | 'medium' | 'small' | 'wide' | 'full';
+  loading: boolean;
+  size?: 'large' | 'medium' | 'small' | 'regular';
+  width?: 'half' | 'wide' | 'full';
   variant?: 'primary' | 'secondary' | 'ghost';
   onClick?: MouseEventHandler<HTMLButtonElement>;
   rounded?: boolean;

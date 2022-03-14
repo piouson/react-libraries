@@ -1,8 +1,8 @@
-/* @layer components {
-  .btn {
-    @apply whitespace-nowrap p-2 transition ease-in-out duration-300;
-  }
-} */
+.btn {
+  white-space: nowrap;
+  padding: 0.5rem;
+  transition: 0.3s ease-in-out;
+}
 .btn:hover,
 .btn:active {
   background: white;

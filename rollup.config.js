@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import dts from 'rollup-plugin-dts';
+import del from 'rollup-plugin-delete';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const packageJson = require('./package.json');
@@ -19,7 +20,7 @@ const rollupConfig = [
         file: packageJson.main,
         format: 'cjs',
         sourcemap: !isProduction,
-        name: 'piouson-react-modules',
+        name: 'react-modules-template',
       },
       {
         file: packageJson.module,
@@ -34,6 +35,7 @@ const rollupConfig = [
     ],
     plugins: [
       peerDepsExternal(),
+      del({ targets: ['dist/*', 'styles/tailwind.css'] }),
       nodeResolve(),
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),

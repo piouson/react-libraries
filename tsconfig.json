@@ -11,7 +11,7 @@
     "declarationDir": "types",
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "sourceMap": true,
     "emitDeclarationOnly": true
   },
